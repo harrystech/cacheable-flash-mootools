@@ -9,10 +9,3 @@ rails_javascripts_dir = "#{Rails.root}/public/javascripts"
 
 puts "copying flash.js to #{rails_javascripts_dir}"
 cp "#{dir}/flash.js", rails_javascripts_dir
-
-if File.exists?("#{rails_javascripts_dir}/jquery.cookie.js")
-  puts "#{rails_javascripts_dir}/jquery.cookie.js already exists"
-else
-  puts "copying jquery.cookie.js to #{rails_javascripts_dir}"
-  cp "#{dir}/jquery.cookie.js", rails_javascripts_dir
-end

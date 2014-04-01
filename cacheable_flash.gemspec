@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<stackable_flash>, [">= 0.0.7"])
   s.add_runtime_dependency(%q<json>, [">= 0"])
   s.add_development_dependency(%q<rails>, ["~> 3.1.3"])
-  s.add_development_dependency(%q<jquery-rails>, [">= 0"])
   s.add_development_dependency(%q<rspec-rails>, [">= 2.11.0"])
   s.add_development_dependency(%q<rdoc>, [">= 3.12"])
   s.add_development_dependency(%q<reek>, [">= 1.2.8"])

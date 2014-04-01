@@ -18,7 +18,6 @@ module CacheableFlash
         ActiveSupport::Deprecation.warn("Rails 3.1 has the asset pipeline, so you only need to copy javascript files if you aren't using it.")
       end
       template 'flash.js',     'public/javascripts/flash.js'
-      template 'jquery.cookie.js', 'public/javascripts/jquery.cookie.js'
     end
   end
 end
