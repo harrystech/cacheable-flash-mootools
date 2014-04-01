@@ -1,21 +1,19 @@
-// refactoring from https://github.com/leonid-shevtsov/cacheable-flash-jquery
 var Flash = new Object();
 
 Flash.data = {};
 
 Flash.transferFromCookies = function() {
-  var data = JSON.parse(unescape($.cookie("flash") || '{}'));
+  var data = JSON.parse(unescape(Cookie.read("flash") || '{}'));
   if(!data) data = {};
   Flash.data = data;
-  $.cookie('flash', null, {path: '/', domain: '<%=CacheableFlash::Config.config[:domain]%>'});
+  Cookie.write('flash', null, {path: '/', domain: '<%=CacheableFlash::Config.config[:domain]%>'});
 };
 
 Flash.writeDataTo = function(name, element, callback) {
-  element = $(element);
   var message = "";
   if (Flash.data[name]) {
     message = Flash.data[name].toString().replace(/\+/g, ' ');
-    element.text(message);
+    element.textContent = message;
     if (callback && typeof(callback) === 'function') {
       callback(element);
     } else {
