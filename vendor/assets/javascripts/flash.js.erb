@@ -1,23 +1,22 @@
-var Flash = new Object();
+var Flash = new Class({
 
-Flash.data = {};
+  initialize: function () {
+    var data = JSON.parse(unescape(Cookie.read("flash") || '{}'));
+    if(!data) data = {};
+    this.data = data;
+    Cookie.write('flash', null, {path: '/', domain: '<%=CacheableFlash::Config.config[:domain]%>'});
+  },
 
-Flash.transferFromCookies = function() {
-  var data = JSON.parse(unescape(Cookie.read("flash") || '{}'));
-  if(!data) data = {};
-  Flash.data = data;
-  Cookie.write('flash', null, {path: '/', domain: '<%=CacheableFlash::Config.config[:domain]%>'});
-};
-
-Flash.writeDataTo = function(name, element, callback) {
-  var message = "";
-  if (Flash.data[name]) {
-    message = Flash.data[name].toString().replace(/\+/g, ' ');
-    element.textContent = message;
-    if (callback && typeof(callback) === 'function') {
-      callback(element);
-    } else {
-      element.show();
+  writeDataTo: function(name, element, callback) {
+    var message = "";
+    if (this.data[name]) {
+      message = this.data[name].toString().replace(/\+/g, ' ');
+      element.textContent = message;
+      if (callback && typeof(callback) === 'function') {
+        callback(element);
+      } else {
+        element.show();
+      }
     }
   }
-};
+});
